@@ -12,9 +12,9 @@ package finalprojectpdc;
 import java.io.*;
 import java.net.*;
 
-public class DataNode {
+public class Deprecated_DataNode {
     
-    
+     
     
     public void heartBeat(){
     

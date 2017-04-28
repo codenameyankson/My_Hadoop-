@@ -13,17 +13,18 @@ import java.util.logging.Logger;
 /**
  *
  * @author MrYankson
+ * @author 25/04/17
  */
 public class NameNode {
     
     ServerSocket serverSocket = null;  
     int nameNode;
     HashMap metadata ;
-    ArrayList activeNode;
+    ArrayList activeNodes;
     
     public  NameNode(){
          metadata = new HashMap();
-         activeNode = new ArrayList();
+         activeNodes = new ArrayList();
          nameNode = 0;
         
     }
@@ -32,7 +33,7 @@ public class NameNode {
     public void listner(int portNumber){
       
         while (true){
-           String input;
+           int dataNodeId;
            try {
             serverSocket = new ServerSocket(portNumber);
         } catch (IOException ex) {
@@ -49,21 +50,48 @@ public class NameNode {
         try {
             Socket clientSock = serverSocket.accept();     
             PrintWriter writer =new PrintWriter(clientSock.getOutputStream(), true);                   
-           
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSock.getInputStream()));
              
-            while ((input = reader.readLine()) != null){
-                if (input.equals(input)){
-                 writer. println("Noted"); 
-                 System.out.println(input);
+            while ((dataNodeId = Integer.parseInt(reader.readLine())) > 0){
+                //inverted if statement to check if the datanodeID is not in the 
+                //list of active nodes
+                if (! activeNodes.contains(dataNodeId)){
+                    //switch statement to identify our 5 Data nodes
+                    switch (dataNodeId){
+                        case 1:
+                            // adding to the active nodes list
+                            activeNodes.add(dataNodeId);
+                            //sending a response 
+                            writer. println("Noted"); 
+                            // prinint to server console
+                            System.out.println("Data node"+dataNodeId+" was added to the active nodes");
+                        case 2:
+                            activeNodes.add(dataNodeId);
+                            writer. println("Noted"); 
+                            System.out.println("Data node"+dataNodeId+" was added to the active nodes");
+                        case 3:
+                            activeNodes.add(dataNodeId);
+                            writer. println("Noted"); 
+                            System.out.println("Data node"+dataNodeId+" was added to the active nodes");
+                        case 4:
+                            activeNodes.add(dataNodeId);
+                            writer. println("Noted"); 
+                            System.out.println("Data node"+dataNodeId+" was added to the active nodes");
+                        case 5:
+                            activeNodes.add(dataNodeId);
+                            writer. println("Noted"); 
+                            System.out.println("Data node"+dataNodeId+" was added to the active nodes");
+                        default:
+                            writer. println("Node not Recognized");
+                    }  
+                    }else{
+                            writer. println("Noted");
                 }
-            }
-               
-        
+                 
+                }
     }   catch (IOException ex) {
             Logger.getLogger(NameNode.class.getName()).log(Level.SEVERE, null, ex);
         }
        }
-    
 }
 }
