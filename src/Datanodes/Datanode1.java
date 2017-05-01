@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -30,12 +31,19 @@ public class Datanode1 implements Runnable
     //The port on which the namenode is always listening on
     int namenode_portNumber;
     
+    //The id of the datanode
+    int datanodeId;
+   //Datanode portnumber for listening for other request
+    int datanode_portNumber;
+    ServerSocket serverSocket;
     //A hashmap to store data keys and values
+    //The String is the key if each data values stored in an arraylist.
     HashMap<String,ArrayList<Double>> nodeData = new HashMap<String,ArrayList<Double>>();
     
     
     /**
-     * 
+     * The constructor create an instance of the heartbeat class and use thread
+     * to run its run method which send heartbeat info to the name node.
      * @param node_id The id of this data node
      * @param namenode_address The IP address of the name node to send heart beat 
      * messages to by the data node.
@@ -45,15 +53,129 @@ public class Datanode1 implements Runnable
     public Datanode1(int node_id,String namenode_address,int namenode_portNumber)
     {
         this.nodeData = null;
+        this.serverSocket = null;
+        this.datanodeId = node_id;
         this.namenode_address = namenode_address;
         this.namenode_portNumber = namenode_portNumber;
+        Thread heartBeatThread= new Thread(new SendHeartbeat(this.datanodeId,this.namenode_address,this.namenode_portNumber));
+        heartBeatThread.start();
     }
     
     
+    /**
+     * This is the main method of the Data node1 class. 
+     * This method receive the data node id, the address of the name node and the port number
+     * on which the data node is listening for heartbeat messages.
+     * 
+     * It create a thread that is used the run the run method of the data node class.
+     * @param args Command line argument
+     */
+    public static void main(String args[])
+    {
+        int datanodeID;
+        String namenodeAddress;
+        int namenodePortnumber;
+        if (args.length < 3) 
+        {
+            System.out.println("Error: Please enter datanode id, namenode address and portnumber");
+            System.exit(1);
+        } else {
+            datanodeID= Integer.valueOf(args[0]).intValue();
+            namenodeAddress = args[3];
+            namenodePortnumber = Integer.valueOf(args[3]).intValue();
+            
+            Datanode1 datanode = new Datanode1(datanodeID,namenodeAddress,namenodePortnumber);
+            Thread datanodeListener= new Thread(datanode);
+            datanodeListener.start();
+        }
+    }
     
+    /**
+     * This run method create a server socket which listens for request from other 
+     * data nodes and the name node. I
+     * 
+     * It searches for a port number to communicate listen for request on.
+     */
+    @Override
     public void run()
     {
-        
+        //Look for available port number to lsiten for request
+            for(int i = 80; i < 10000; i+=10)
+            {
+                try
+                {
+                    serverSocket =
+                    new ServerSocket(i);
+                    this.datanode_portNumber = i;
+                    break;
+                }
+                catch (Exception e)
+                {
+                    System.err.println(e.toString());
+                }
+            }
+            
+            if(serverSocket != null)
+            {
+                try(Socket clientSocket = serverSocket.accept();)
+                {
+                    createSocketConnection(clientSocket);
+                }
+                catch(Exception e)
+                {
+                   System.err.println(e.toString());
+                }
+            }
+        }
+    
+    
+    /**
+     * This method create a socket connection to allow other data nodes communicate
+     * with this data node. Name node will also send command 
+     * @param clientSocket An instance of a socket to create a socket connection 
+     */
+    public void createSocketConnection(Socket clientSocket)
+    {
+        if(clientSocket != null)
+        {
+           try (PrintWriter out =
+                        new PrintWriter(clientSocket.getOutputStream(), true);
+                    BufferedReader in =
+                        new BufferedReader(
+                            new InputStreamReader(clientSocket.getInputStream()));
+                )
+                {
+                    String message = in.readLine();
+                    
+                   String [] messageArr = message.split("\t");
+                   
+                   if(messageArr.length ==3 && messageArr[0].equalsIgnoreCase("copy"))
+                   {
+                       String dataKey = messageArr[1];
+                       int othernodes_listenPortNumber = Integer.valueOf(messageArr[2]).intValue();
+                       copyData(dataKey,othernodes_listenPortNumber);
+                   }
+                }
+           catch(IOException e)
+           {
+               System.err.println(e.toString());
+           }
+          catch(Exception e)
+          {
+              System.err.println(e.toString());
+          }
+        }
+    }
+    
+    /**
+     * Think about how to send the data
+     * @param dataKey
+     * @param othernodes_listenPortNumber
+     * @return 
+     */
+    public String copyData(String dataKey,int othernodes_listenPortNumber)
+    {
+         return "success";
     }
     
     
@@ -80,7 +202,6 @@ public class Datanode1 implements Runnable
         int datanodeId;
         
         /**
-         * 
          * @param node_id The id of this data node
          * @param namenode_address The IP address of the name node to send heart beat 
          * messages to.
@@ -93,7 +214,20 @@ public class Datanode1 implements Runnable
             this.namenodeAddress = namenode_address;
             this.namenodePortNumber = namenode_portNumber;
         }
-        
+            
+        /**
+         * This method override the run method of the Runnable interface.
+         * 
+         * It create a socket connection to the name node that manages all data nodes 
+         * in the distributed system to send heart beat information.
+         * 
+         * When name node response ("noted"), the socket connection is closed and
+         * the thread running the method is made to sleep for 30 seconds.
+         * 
+         * When the threads wake up, it create another connection to the name node
+         * to send another heartbeat info repeating the whole process infinitely
+         * 
+         */
         @Override
         public void run()
         {

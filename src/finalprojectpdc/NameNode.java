@@ -55,7 +55,7 @@ public class NameNode {
             while ((dataNodeId = Integer.parseInt(reader.readLine())) > 0){
                 //inverted if statement to check if the datanodeID is not in the 
                 //list of active nodes
-                if (! activeNodes.contains(dataNodeId)){
+                if (!activeNodes.contains(dataNodeId)){
                     //switch statement to identify our 5 Data nodes
                     switch (dataNodeId){
                         case 1:
