@@ -6,14 +6,19 @@
 package Datanodes;
 
 import java.io.BufferedReader;
+import java.io.*;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +28,7 @@ import java.util.HashMap;
  * 
  * 
  */
-public class Datanode1 implements Runnable
+public class Datanode implements Runnable
 {
     //The IP address of the namenode
     String namenode_address;
@@ -38,7 +43,7 @@ public class Datanode1 implements Runnable
     ServerSocket serverSocket;
     //A hashmap to store data keys and values
     //The String is the key if each data values stored in an arraylist.
-    HashMap<String,ArrayList<Double>> nodeData = new HashMap<String,ArrayList<Double>>();
+    HashMap<String,String> nodeData;
     
     
     /**
@@ -50,15 +55,13 @@ public class Datanode1 implements Runnable
      * @param namenode_portNumber The port number on which the name node is listening
      * for heart beat messages from data nodes.
      */
-    public Datanode1(int node_id,String namenode_address,int namenode_portNumber)
+    public Datanode(int node_id,String namenode_address,int namenode_portNumber)
     {
-        this.nodeData = null;
+        this.nodeData = new HashMap();
         this.serverSocket = null;
         this.datanodeId = node_id;
         this.namenode_address = namenode_address;
         this.namenode_portNumber = namenode_portNumber;
-        Thread heartBeatThread= new Thread(new SendHeartbeat(this.datanodeId,this.namenode_address,this.namenode_portNumber));
-        heartBeatThread.start();
     }
     
     
@@ -81,92 +84,67 @@ public class Datanode1 implements Runnable
             System.exit(1);
         } else {
             datanodeID= Integer.valueOf(args[0]).intValue();
-            namenodeAddress = args[3];
-            namenodePortnumber = Integer.valueOf(args[3]).intValue();
+            namenodeAddress = args[1];
+            namenodePortnumber = Integer.valueOf(args[2]).intValue();
             
-            Datanode1 datanode = new Datanode1(datanodeID,namenodeAddress,namenodePortnumber);
-            Thread datanodeListener= new Thread(datanode);
-            datanodeListener.start();
+            Datanode datanode = new Datanode(datanodeID,namenodeAddress,namenodePortnumber);
+            //Thread datanodeListener= new Thread(datanode);
+           // datanodeListener.start();
+           
+           datanode.loadData();
+            SendHeartbeat datanode_heartbeat = new SendHeartbeat(datanodeID,namenodeAddress,namenodePortnumber);
+            Thread heartBeatThread = new Thread(datanode_heartbeat);
+            heartBeatThread.start();
         }
+    }
+    /**
+     * This method load data from a file to be stored in a HashMap.
+     * The data is a key value pair.
+     */
+    public void loadData()
+    {
+      String line="";
+        try {
+        line = Files.readAllLines(Paths.get("data.txt")).get(datanodeId-1);
+     } catch (IOException ex) {
+         Logger.getLogger(Datanode.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        //String line = "4002018:Ibrahim Abdulllah";
+        String[] dataArr = line.split(":");
+     
+        String key = dataArr[0];
+        String value = dataArr[1];
+        System.out.println(key+value);
+        this.nodeData.put(key,value);
+        
+        System.out.println(nodeData.get(key));
     }
     
     /**
-     * This run method create a server socket which listens for request from other 
-     * data nodes and the name node. I
      * 
-     * It searches for a port number to communicate listen for request on.
      */
-    @Override
+    public void locator ()
+    {
+        int inc =0;
+        int locator=0;
+        for (int i=0; i<this.datanodeId;i++)
+        {
+            inc = i +1;
+            locator = this.datanodeId + inc;
+            //tranferFunction(locator);
+        }
+    }
+    
+    
+    public int yearSpentInSchool()
+    {
+        
+    }
     public void run()
     {
-        //Look for available port number to lsiten for request
-            for(int i = 80; i < 10000; i+=10)
-            {
-                try
-                {
-                    serverSocket =
-                    new ServerSocket(i);
-                    this.datanode_portNumber = i;
-                    break;
-                }
-                catch (Exception e)
-                {
-                    System.err.println(e.toString());
-                }
-            }
-            
-            if(serverSocket != null)
-            {
-                try(Socket clientSocket = serverSocket.accept();)
-                {
-                    createSocketConnection(clientSocket);
-                }
-                catch(Exception e)
-                {
-                   System.err.println(e.toString());
-                }
-            }
-        }
-    
-    
-    /**
-     * This method create a socket connection to allow other data nodes communicate
-     * with this data node. Name node will also send command 
-     * @param clientSocket An instance of a socket to create a socket connection 
-     */
-    public void createSocketConnection(Socket clientSocket)
-    {
-        if(clientSocket != null)
-        {
-           try (PrintWriter out =
-                        new PrintWriter(clientSocket.getOutputStream(), true);
-                    BufferedReader in =
-                        new BufferedReader(
-                            new InputStreamReader(clientSocket.getInputStream()));
-                )
-                {
-                    String message = in.readLine();
-                    
-                   String [] messageArr = message.split("\t");
-                   
-                   if(messageArr.length ==3 && messageArr[0].equalsIgnoreCase("copy"))
-                   {
-                       String dataKey = messageArr[1];
-                       int othernodes_listenPortNumber = Integer.valueOf(messageArr[2]).intValue();
-                       copyData(dataKey,othernodes_listenPortNumber);
-                   }
-                }
-           catch(IOException e)
-           {
-               System.err.println(e.toString());
-           }
-          catch(Exception e)
-          {
-              System.err.println(e.toString());
-          }
-        }
+        
     }
-    
+  
     /**
      * Think about how to send the data
      * @param dataKey
@@ -178,7 +156,7 @@ public class Datanode1 implements Runnable
          return "success";
     }
     
-    
+}
     
     /**
      * This is a sub class of the Data node class which implements the 
@@ -242,24 +220,26 @@ public class Datanode1 implements Runnable
                             new InputStreamReader(datanodeHeartbeatSocket.getInputStream()));
                 ) 
                 {
-                    String heartbeatMessage = String.valueOf(datanodeId);
+                    //String heartbeatMessage = String.valueOf(datanodeId);
 
                     //Send hearbeat message to the name node
-                    out.print(heartbeatMessage);
+                    out.println(Integer.toString(datanodeId));
 
                     //Listens for namenode response to hearbeat  message sent
                     String namenodeResponse = in.readLine();
-
+                        
+                    System.out.println(namenodeResponse);
                     //Analyze namesnode respose 
                     if(namenodeResponse.equalsIgnoreCase("noted"))
                     {
+                        out.println();
                         in.close();
                         out.close();
                         datanodeHeartbeatSocket.close();
                         
                         try 
                         {
-                            Thread.sleep((long)(0.5 * 1000));
+                            Thread.sleep((long)(100000));
                         } 
                         catch (InterruptedException e) 
                         {
@@ -283,5 +263,4 @@ public class Datanode1 implements Runnable
             }
            
         }
-    }
 }
