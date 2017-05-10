@@ -10,13 +10,11 @@ import java.io.*;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import static java.lang.Thread.MAX_PRIORITY;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,9 +43,10 @@ public class Datanode implements Runnable
     ServerSocket serverSocket;
     //A hashmap to store data keys and values
     //The String is the key if each data values stored in an arraylist.
-    HashMap<String,String> nodeData;
+    HashMap<String,String> nodeData = new HashMap<String,String>();
     //static ArrayList<Integer> datanodesPortNumbers = new ArrayList<>();
-    
+
+    static File logFile = new File("LogFile.txt");
     /**
      * The constructor create an instance of the heartbeat class and use thread
      * to run its run method which send heartbeat info to the name node.
@@ -59,17 +58,11 @@ public class Datanode implements Runnable
      */
     public Datanode(int node_id,String namenode_address,int namenode_portNumber)
     {
-        this.nodeData = new HashMap();
         this.serverSocket = null;
         this.datanodeId = node_id;
         this.namenode_address = namenode_address;
         this.namenode_portNumber = namenode_portNumber;
         this.loadData(datanodeId);
-        //datanodesPortNumbers.add(this.datanodeId-1,(5000+ this.datanodeId));
-//        for (int i = 0; i<5; i++){
-//            // considering are system deals with 5 datanodes
-//            this.datanodesPortNumbers.add(5000+i);
-//        }
         
     }
     
@@ -96,14 +89,6 @@ public class Datanode implements Runnable
             namenodeAddress = args[1];
             namenodePortnumber = Integer.valueOf(args[2]).intValue();
             
-            //Datanode datanode = new Datanode(datanodeID,namenodeAddress,namenodePortnumber);
-            //System.out.println(datanode.datanodesPortNumbers.size());
-            //datanode.datanodesPortNumbers.add(datanodeID-1, (5000+datanodeID));
-            //Thread datanodeListener= new Thread(datanode);
-            //datanodeListener.setPriority(MAX_PRIORITY);
-            //datanodeListener.start();
-           
-            
             //Load data to be stored at this datanode from the file
             //datanode.loadData(datanodeID);
             //Create an instance of the heartbeat class 
@@ -113,6 +98,32 @@ public class Datanode implements Runnable
             heartBeatThread.start();
         }
     }
+    
+   public synchronized File getLogFile(){
+       return Datanode.logFile;
+   }
+    
+    public synchronized void writeToLogFile(){
+        try{
+            PrintWriter file = new PrintWriter(new BufferedWriter(new FileWriter(this.getLogFile(),true)));
+            //BufferedWriter writer = new BufferedWriter(file);
+            file.write(this.datanodeId+ "\n");
+            for (String key : this.nodeData.keySet()){
+                  System.out.println(key);
+                  System.out.println(this.nodeData.get(key));
+                 file.write(key+" : " +this.nodeData.get(key) + "\n");
+                 file.flush();
+        }        
+            file.close();
+            //file.close();
+            } catch (IOException ex) {
+            Logger.getLogger(Datanode.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+        
+    }
+    
+    
     /**
      * This method load data from a file and store it in a HashMap.
      * The data is a key value pair in the format of student ID and 
@@ -372,6 +383,7 @@ public class Datanode implements Runnable
                         {
                             int replicationFactor = Integer.parseInt(responseArr[0]);
                             this.locator(replicationFactor);
+                            this.writeToLogFile();
                         }catch(Exception e)
                         {
                             System.out.println(e.toString());
@@ -379,7 +391,7 @@ public class Datanode implements Runnable
                         
                         try 
                         {
-                            Thread.sleep((long)(100));
+                            Thread.sleep((long)(1000000000));
                             //running = false;
                             //Thread.interrupt();
                         } 
