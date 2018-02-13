@@ -41,6 +41,8 @@ public class Datanode implements Runnable
    //Datanode portnumber for listening for other request
     int datanode_portNumber;
     ServerSocket serverSocket;
+    
+    
     //A hashmap to store data keys and values
     //The String is the key if each data values stored in an arraylist.
     HashMap<String,String> nodeData = new HashMap<String,String>();
@@ -93,34 +95,13 @@ public class Datanode implements Runnable
             //datanode.loadData(datanodeID);
             //Create an instance of the heartbeat class 
             //This will send constant messages to the namenode to show it sill alive
+            Datanode node = new Datanode(datanodeID,namenodeAddress,namenodePortnumber);
+            Thread t1 = new Thread(node);
             SendHeartbeat datanode_heartbeat = new SendHeartbeat(datanodeID,namenodeAddress,namenodePortnumber);
             Thread heartBeatThread = new Thread(datanode_heartbeat);
             heartBeatThread.start();
+            t1.start();
         }
-    }
-    
-   public synchronized File getLogFile(){
-       return Datanode.logFile;
-   }
-    
-    public synchronized void writeToLogFile(){
-        try{
-            PrintWriter file = new PrintWriter(new BufferedWriter(new FileWriter(this.getLogFile(),true)));
-            //BufferedWriter writer = new BufferedWriter(file);
-            file.write(this.datanodeId+ "\n");
-            for (String key : this.nodeData.keySet()){
-                  System.out.println(key);
-                  System.out.println(this.nodeData.get(key));
-                 file.write(key+" : " +this.nodeData.get(key) + "\n");
-                 file.flush();
-        }        
-            file.close();
-            //file.close();
-            } catch (IOException ex) {
-            Logger.getLogger(Datanode.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      
-        
     }
     
     
@@ -152,7 +133,6 @@ public class Datanode implements Runnable
         
         //Store the data in the HashMap
         this.nodeData.put(key,value);
-        System.out.println(this.nodeData.get(key));
     }
     
     /**
@@ -177,58 +157,21 @@ public class Datanode implements Runnable
             {
                 loadData(2);
             }
+            else if(locator == 8)
+            {
+                loadData(3);
+            }
+            
+            else if(locator == 8)
+            {
+                loadData(4);
+            }
             else
             {
                 loadData(locator);
             }
-        }
     }
-    /**
-     * This method create a socket connection to other nodes to replicate data.
-     * This is based on the assumption that every data nodes have a list of all 
-     * port numbers on which other data nodes are constantly listening for 
-     * to accept connection.
-     * 
-     * This method will use the id to the data node to send the data to to look
-     * for the port number on which that data node is listening.
-     * 
-     * It will create a connection to the data node and send copy and the its
-     * data node it to the other data node.
-     * 
-     * @param receivingDatanodeid The id of the data node to send the data to
-     */
-    public synchronized void sendDataToDatanode(int receivingDatanodeid)
-    {
-        
-        //Get the port number of the data node to replicate the data on
-        //int receivingDatanodePortnumber = datanodesPortNumbers.get(receivingDatanodeid-1);
-        
-        try(
-            Socket recievingNodeSocket = new Socket("localhost",(5000+receivingDatanodeid)); 
-            PrintWriter out = new PrintWriter(recievingNodeSocket.getOutputStream());
-            BufferedReader in = 
-                    new BufferedReader(new InputStreamReader(recievingNodeSocket.getInputStream()));
-            
-                
-            )
-        {
-            //Send message to the other data node to copy data from the file
-            out.println("copy" + " " +(this.datanodeId));
-            
-            String receivingNodeFeedback = in.readLine();
-            
-            if(receivingNodeFeedback.equalsIgnoreCase("copied"))
-            {
-                in.close();
-                out.close();
-                recievingNodeSocket.close();
-            }
-        }
-        catch(IOException ea)
-        {
-            System.err.println(ea.toString());
-        }
-    }    
+    }
             
     /**
      * This run method create a server socket connection to listen for connections 
@@ -240,15 +183,34 @@ public class Datanode implements Runnable
      * This method also call the locator method to find data nodes to replicates it
      * data on. Replication is done only when number of data nodes available is five
      */
+    
     public void run()
     {
         while(true)
         {
                 try
                 {
-                    ServerSocket datanodeServer = new ServerSocket(5000+ this.datanodeId);
-                    Socket datanodeSocket = datanodeServer.accept();
-                    createSocketConnection(datanodeSocket);
+                    //ServerSocket datanodeServer = new ServerSocket(5000+ this.datanodeId);
+                    Socket datanodeSocket = new Socket(this.namenode_address,this.namenode_portNumber);
+                    PrintWriter out =
+                        new PrintWriter(datanodeSocket.getOutputStream(), true);
+                    BufferedReader in =
+                        new BufferedReader(
+                            new InputStreamReader(System.in));
+                    BufferedReader br =
+                        new BufferedReader(
+                            new InputStreamReader(datanodeSocket.getInputStream()));
+                    
+                    String userinput;
+                    
+                    userinput = in.readLine();
+                    
+                    if(userinput.equalsIgnoreCase("end"))
+                        {
+                            out.println("die," + this.datanodeId);
+                            System.out.println(br.readLine());
+                            System.exit(0);
+                        }    
                 }
                 catch(Exception e)
                 {
@@ -256,49 +218,6 @@ public class Datanode implements Runnable
                 }
         }
     }
-    
-    
-    /**
-     * This node create a Socket connection to other data nodes to send to 
-     * ensure communication between two data nodes.
-     * 
-     * This data node receive a command from the other nodes and executes an action
-     * depending on the message received.
-     * @param datanodeScokect 
-     */
-    public void createSocketConnection(Socket datanodeScokect)
-    {
-        try(
-               //PrintWriter out = new PrintWriter(datanodeScokect.getOutputStream(),true);
-                
-                DataOutputStream dot = new DataOutputStream(datanodeScokect.getOutputStream());
-                DataInputStream dis = new DataInputStream(datanodeScokect.getInputStream());
-                //BufferedReader in = new BufferedReader(new InputStreamReader(datanodeScokect.getInputStream()));
-            )
-        {
-            String message = dis.readUTF();
-            System.out.println(message.toString());
-            if(message.equalsIgnoreCase("replicate"))
-            {
-                System.out.println("Replicate message received");
-                locator(3);
-            }
-            else if(message.contains("copy"))
-            {
-                String[] messageArray = message.split(" ");
-                loadData(Integer.parseInt(messageArray[1]));
-                dot.writeUTF("copied");
-            }
-            else{
-                System.out.println("Empty message");
-            }
-        }
-        catch(Exception ea)
-        {
-            System.err.println(ea.toString());
-        }
-    }
-    
 }
     
     /**
@@ -365,14 +284,12 @@ public class Datanode implements Runnable
                             new InputStreamReader(datanodeHeartbeatSocket.getInputStream()));
                 ) 
                 {
-                    //String heartbeatMessage = String.valueOf(datanodeId);
 
                     //Send hearbeat message to the name node
                     out.println(datanodeId);
 
                     //Listens for namenode response to hearbeat  message sent
                     String namenodeResponse = in.readLine();
-                        
                     System.out.println(namenodeResponse);
                     //Analyze namesnode respose 
                     if(namenodeResponse.contains("Noted"))
@@ -383,22 +300,30 @@ public class Datanode implements Runnable
                         {
                             int replicationFactor = Integer.parseInt(responseArr[0]);
                             this.locator(replicationFactor);
-                            this.writeToLogFile();
                         }catch(Exception e)
                         {
                             System.out.println(e.toString());
                         }
-                        
-                        try 
+                    }
+                    else if(namenodeResponse.equalsIgnoreCase("copy"))
+                    {
+                        System.out.println("Just received copy");
+                        if(this.datanodeId == 1)
                         {
-                            Thread.sleep((long)(1000000000));
-                            //running = false;
-                            //Thread.interrupt();
-                        } 
-                        catch (InterruptedException e) 
-                        {
-                            System.err.println(e.toString());
+                            loadData(5);
                         }
+                        else
+                        {
+                            loadData(this.datanodeId-1);
+                        }
+                    }
+                    try
+                    {
+                        Thread.sleep(10000);
+                    }
+                    catch(Exception e)
+                    {
+                        System.err.println();
                     }
                 } 
                 catch (UnknownHostException e) 

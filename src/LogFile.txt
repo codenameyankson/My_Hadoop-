@@ -3,3 +3,578 @@
 37452017 : Kingsley Agyekum	MIS	2020
 48492019 : Kingley Amoaning	CS	2017
 34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+2
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+37452017 : Kingsley Agyekum	MIS	2020
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+3
+37452017 : Kingsley Agyekum	MIS	2020
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+5
+20182018 : Joseph Wukpann	BA	2018
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+48492019 : Kingley Amoaning	CS	2017
+4
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+34752017 : Kwadwo Osafo Maafo	CS	2021
+3
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+2
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+48492019 : Kingley Amoaning	CS	2017
+34752017 : Kwadwo Osafo Maafo	CS	2021
+1
+20182018 : Joseph Wukpann	BA	2018
+37452017 : Kingsley Agyekum	MIS	2020
+40002018 : Maxwell Aladago CS	2018
+48492019 : Kingley Amoaning	CS	2017

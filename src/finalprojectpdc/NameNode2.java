@@ -2,12 +2,18 @@ package finalprojectpdc;
 
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger; 
 
 public class NameNode2{
-
+    /**
+    *class for the Name node. 
+     * @param args
+    @args Replication factor
+    */
         public static void main(String args[])
         {
             Socket nsocket=null;
@@ -56,61 +62,80 @@ public class NameNode2{
         }
 
 }
-
+/**
+ * @Ibrahim
+ * @author MrYankson
+ * This is a class modeling the masterNode in the hadoop architecture.
+ */
 class MasterNameNode extends Thread
 {
-    public static int nodeCount = 5;
-    private  int REPPLICATION_FACTOR;
-    String dataLine = null;
-    ServerSocket serverSocket = null;  
+    public static int nodeCount = 5;        //the Number of desired nodes for Successful startup
+    private  int REPPLICATION_FACTOR;       //replication factor for each data in the system
+    ServerSocket serverSocket = null;       //Server socket 
     int nameNodeID;
-    private final HashMap metadata;
-    public static ArrayList<Integer> activeNodes = new ArrayList();
-    public static HashMap<Integer,Date> heartbeatTimestamp= new HashMap();
+    public static  HashMap metadata;         // a map containng the datanodes and the data stored on them
+    public static ArrayList<Integer> activeNodes = new ArrayList();     //list keeping a track of our active nodes
+   
+    static boolean isAlive = true;
     BufferedReader  reader = null;
     PrintWriter writer = null;
     Socket clientSock = null;
-    
+    String dataLine = null;
 
+    /**
+    Constructor for the Name Node class
+    @param socket client socket
+    * @param int replication factor
+    */
 public MasterNameNode(Socket cSocket, int replicationFactor)
 {
         metadata = new HashMap<Integer,ArrayList<Integer>>();
         nameNodeID = 0;
         this.clientSock = cSocket;
-        this.REPPLICATION_FACTOR = replicationFactor;
+        this.REPPLICATION_FACTOR = replicationFactor; // replication factor detemined by the client on start up via constructor
 }
-
+/**
+ * Synchronized method used by threads to add to the static array list 
+ * @param node 
+ */
 public synchronized void addNodeToArrayList(int node)
 {
     this.getActiveNodes().add(node);
    
 }
-
+/***
+ * 
+ * @return an ArrayList of active nodes 
+ */
 public synchronized ArrayList getActiveNodes()
 {
     return this.activeNodes;
 }
-
+/**
+ * this is the run method for the class that runs a thread to listen to all 
+ * connections.
+ */
 
 public void run()
 {
-        this.listner();
-        
-    
-        
-    
+        this.listner();   
 }
-
+/**
+ * this method calculates the datanodes where a particular node's data should
+ * be copied to. based on the replication factor.
+ * @param datanodeId
+ * @return ArrayList of locations
+ */
 public ArrayList<Integer> dataLocation(int datanodeId){
     ArrayList<Integer> locations = new ArrayList();
-    
+    locations.add(datanodeId);
    // int inc;
         int locator;
         for (int i=1; i<REPPLICATION_FACTOR+1;i++)
         {
             locator = datanodeId%this.nodeCount;
             locator +=i;
-            System.out.println(locator);
+            //System.out.println(locator);
             if (locator>5)
             {
                locations.add(locator%5);
@@ -123,6 +148,45 @@ public ArrayList<Integer> dataLocation(int datanodeId){
        
     return locations;
 }
+
+public void report()
+{
+    //FileReader fr = new FileReader("data.txt");
+    Iterable<Integer> dataNodelist =  MasterNameNode.metadata.keySet();
+    
+    for (Integer key : dataNodelist)
+    {
+        System.out.println("\n \tThis is report for Data on node:" + key+"\n");
+        ArrayList<Integer> valueList = (ArrayList<Integer>)MasterNameNode.metadata.get(key);
+            
+        for (int ln : valueList)       
+        {
+            try 
+            {  System.out.println("___________________________________________");
+                URL path = MasterNameNode.class.getResource("data.txt");
+                String a = path.getPath();
+                String  line = Files.readAllLines(Paths.get(a)).get(ln-1);
+                System.out.println(line);
+            
+            } catch (IOException ex)
+            {
+                Logger.getLogger(MasterNameNode.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+ 
+    
+    }   
+}
+
+
+
+
+
+/**
+ * This method continues to listen for messages from the clients and initiates 
+ * a command based on the message sent.
+ */
 public void listner()
 {
 
@@ -140,18 +204,33 @@ public void listner()
             //the below statement keeps the server listening continuously 
                 while (!"end".equals(dataLine = reader.readLine()))
                 {
-                    if (dataLine != null){
+                    // this line below detects failure of a node
+                    if(dataLine.contains("die")) 
+                    {  
+                        --MasterNameNode.nodeCount;         //this is to accomodate for dead node
+                        MasterNameNode.isAlive = false;
+                        System.out.println("Datanode just died");
+                        writer.println("Replicating data");
+                        String [] command = dataLine.split(",");
+                        int deadNodeId = Integer.parseInt(command[1]);
+                        MasterNameNode.activeNodes.clear();
+                        MasterNameNode.metadata.clear();
+                        //call replicate command
+                    }
+                    
+                    else if (dataLine != null)
+                    {
                         dataNodeId = Integer.parseInt(dataLine);
                         //inverted if statement to check if the datanodeID is not in the
                         //list of active nodes
-                        if (! activeNodes.contains(dataNodeId))
+                        if (! activeNodes.contains(dataNodeId) && MasterNameNode.isAlive)
                         {
                             //switch statement to identify our 5 Data nodes
                             switch (dataNodeId){
                                 case 1:
                                     // adding to the active nodes list
                                     this.addNodeToArrayList(dataNodeId);
-                                    this.metadata.put(dataNodeId,dataLocation(dataNodeId));
+                                    MasterNameNode.metadata.put(dataNodeId,dataLocation(dataNodeId));
                                     //sending a response
                                     writer. println(this.REPPLICATION_FACTOR +",Noted ");
                                     // prinint to server console
@@ -161,43 +240,72 @@ public void listner()
                                 case 2:
                                     this.addNodeToArrayList(dataNodeId);
                                    writer. println(this.REPPLICATION_FACTOR +",Noted ");
-                                    this.metadata.put(dataNodeId,dataLocation(dataNodeId));
+                                    MasterNameNode.metadata.put(dataNodeId,dataLocation(dataNodeId));
                                     System.out.println("Data node "+dataNodeId+" was added to the active nodes");
                                     break;
                                 case 3:
                                     this.addNodeToArrayList(dataNodeId);
                                    writer. println(this.REPPLICATION_FACTOR +",Noted ");
-                                    this.metadata.put(dataNodeId,dataLocation(dataNodeId));
+                                    MasterNameNode.metadata.put(dataNodeId,dataLocation(dataNodeId));
                                     System.out.println("Data node "+dataNodeId+" was added to the active nodes");
                                     break;
                                 case 4:
                                     this.addNodeToArrayList(dataNodeId);
                                     writer. println(this.REPPLICATION_FACTOR +",Noted ");
-                                    this.metadata.put(dataNodeId,dataLocation(dataNodeId));
+                                    MasterNameNode.metadata.put(dataNodeId,dataLocation(dataNodeId));
                                     System.out.println("Data node "+dataNodeId+" was added to the active nodes");
                                     break;
                                 case 5:
                                     this.addNodeToArrayList(dataNodeId);
                                     writer. println(this.REPPLICATION_FACTOR +",Noted ");
-                                    this.metadata.put(dataNodeId,dataLocation(dataNodeId));
+                                    MasterNameNode.metadata.put(dataNodeId,dataLocation(dataNodeId));
                                     System.out.println("Data node "+dataNodeId+" was added to the active nodes");
                                     break;
                                 default:
                                     writer. println("Node not Recognized");
                             }
-                        }else
-                        {
-                            writer. println("node already in list");
                         }
-                         for (int i =0; i<this.getActiveNodes().size(); i++)
+                        else
                         {
-                            System.out.print(this.metadata+"\n");
-                            System.out.println(this.getActiveNodes().get(i) +" "+ this.getActiveNodes().size());
+                             if (!MasterNameNode.isAlive && !this.activeNodes.contains(dataNodeId))
+                             {
+                                  
+                                writer.println("copy");
+                                this.addNodeToArrayList(dataNodeId);
+                                MasterNameNode.metadata.put(dataNodeId,dataLocation(dataNodeId));
+                                if(dataNodeId ==1)
+                                {
+                                   ArrayList<Integer> l =  ( ArrayList<Integer> )MasterNameNode.metadata.get(dataNodeId);
+                                           l.add(5);
+                                }
+                                else
+                                {
+                                    ArrayList<Integer> l =  ( ArrayList<Integer> )MasterNameNode.metadata.get(dataNodeId);
+                                           l.add(dataNodeId-1);
+                                }
+                                
+                                if(MasterNameNode.activeNodes.size()==MasterNameNode.nodeCount)
+                                {
+                                    MasterNameNode.isAlive = true;
+                                   
+                                }
+                                 this.report();
+                             }
+                             else
+                             {
+                                   writer. println("node already in list");
+                             } 
                         }
+                       // this.report();
+                        System.out.print("\n"+ MasterNameNode.metadata+"\n");
+//                        for (int i =0; i<this.getActiveNodes().size(); i++)
+//                        {
+//                            
+//                            System.out.println(this.getActiveNodes().get(i) +" "+ this.getActiveNodes().size());
+//                        }
                         writer.flush();
                     }
                 }
-                //clientSock.close();
             }catch (SocketException i){
                 System.out.println("Node just Died");
             }
@@ -206,8 +314,8 @@ public void listner()
                 Logger.getLogger(MasterNameNode.class.getName()).log(Level.SEVERE, null, ex1);
             }catch(NullPointerException e)
             {
-                                String line=this.getName(); 
-                                System.out.println("Client "+line+" Closed");
+                                //String line=this.getName(); 
+                               // System.out.println("Client "+line+" Closed");
              }
              catch(NumberFormatException n)
              {
@@ -223,39 +331,6 @@ public void listner()
 
 }
 
-public void rebalance(int DeadNodeId)
-{
-    
-    
-}
-
-public void createSocketConnecction(int datanodeID)
-    {
-        try(
-            Socket recievingNodeSocket = new Socket("172.20.16.139",(5000+datanodeID)); 
-            //PrintWriter out = new PrintWriter(recievingNodeSocket.getOutputStream());
-            //BufferedReader in = new BufferedReader(new InputStreamReader(recievingNodeSocket.getInputStream()));
-            DataInputStream in = new DataInputStream( recievingNodeSocket.getInputStream());
-            DataOutputStream out = new DataOutputStream( recievingNodeSocket.getOutputStream());  
-            )
-        {
-            //Send message to the other data node to copy data from the file
-            out.writeUTF("replicate");
-            
-            String receivingNodeFeedback = in.readUTF();
-            
-            if(receivingNodeFeedback.equalsIgnoreCase("copied"))
-            {
-                in.close();
-                out.close();
-                recievingNodeSocket.close();
-            }
-        }
-        catch(IOException ea)
-        {
-            System.err.println(ea.toString());
-        }
-    }
 
 
 
