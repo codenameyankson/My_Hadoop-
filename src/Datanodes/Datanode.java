@@ -23,6 +23,7 @@ import java.util.logging.Logger;
  *
  * This class is an implementation of the Data node storing data in the system.
  * @author Ibrahim-Abdullah
+ *@author Kingsley A-Yankson
  * @since 29-4-2017
  * @version version 1.0
  * 
