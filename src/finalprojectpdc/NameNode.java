@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author MrYankson
+ * @author Kinsgey A - Yankson
  * @author 25/04/17
  */
 public class NameNode {
