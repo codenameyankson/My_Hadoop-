@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 public class NameNode2{
     /**
+    *@author Kingsley Yankson
     *class for the Name node. 
      * @param args
     @args Replication factor
